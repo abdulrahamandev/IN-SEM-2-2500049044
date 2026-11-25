@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Records</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Student Records</h1>
+        <p>Add, search, update, and remove student information.</p>
+      </header>
+
+      <section class="panel">
+        <h2 id="form-title">Add a student</h2>
+        <form id="student-form">
+          <label>Full name <input name="fullName" required maxlength="100" placeholder="Student name"></label>
+          <label>Roll number <input name="rollNumber" required maxlength="30" placeholder="e.g. CS2024001"></label>
+          <label>Email <input name="email" type="email" required placeholder="student@college.edu"></label>
+          <label>Department <input name="department" required maxlength="80" placeholder="e.g. Computer Science"></label>
+          <label>Semester
+            <select name="semester" required>
+              <option value="">Select semester</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8</option>
+              <option>9</option><option>10</option><option>11</option><option>12</option>
+            </select>
+          </label>
+          <label>Phone <input name="phone" type="tel" maxlength="25" placeholder="Optional"></label>
+          <div class="form-actions">
+            <button type="submit" id="save-button">Add student</button>
+            <button type="button" class="secondary" id="cancel-edit" hidden>Cancel edit</button>
+          </div>
+        </form>
+        <p class="message" id="form-message" role="status"></p>
+      </section>
+
+      <section class="panel">
+        <div class="list-heading">
+          <div><h2>Student list</h2><p id="record-count">Loading records...</p></div>
+          <button type="button" class="secondary" id="refresh-button">Refresh</button>
+        </div>
+        <div class="filters">
+          <label class="search-label">Search roll number or department
+            <input id="search-input" type="search" placeholder="Type to search...">
+          </label>
+          <label>Department
+            <select id="department-select"><option value="">All departments</option></select>
+          </label>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Name</th><th>Roll number</th><th>Email</th><th>Department</th><th>Semester</th><th>Phone</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="student-rows"></tbody>
+          </table>
+          <p class="empty" id="empty-state" hidden>No matching student records.</p>
+        </div>
+      </section>
+      <footer>Student records are stored in MongoDB Atlas.</footer>
+    </main>
+  </body>
+</html>
